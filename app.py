@@ -18,7 +18,7 @@ from tqdm import tqdm
 import concurrent.futures
 from moviepy.editor import VideoFileClip
 
-from nsfw_checker import NSFWChecker
+#from nsfw_checker import NSFWChecker
 from face_swapper import Inswapper, paste_to_whole
 from face_analyser import detect_conditions, get_analysed_data, swap_options_list
 from face_parsing import init_parsing_model, get_parsed_mask, mask_regions, mask_regions_to_list
@@ -115,10 +115,10 @@ def load_face_swapper_model(path="./assets/pretrained_models/inswapper_128.onnx"
 
 def load_face_parser_model(path="./assets/pretrained_models/79999_iter.pth"):
     global FACE_PARSER
-#    if FACE_PARSER is None:
-#        FACE_PARSER = init_parsing_model(path, device=device)
+    if FACE_PARSER is None:
+        FACE_PARSER = init_parsing_model(path, device=device)
   
-#def load_nsfw_detector_model(path="./assets/pretrained_models/open-nsfw.onnx"):
+def load_nsfw_detector_model(path="./assets/pretrained_models/open-nsfw.onnx"):
     global NSFW_DETECTOR
     if NSFW_DETECTOR is None:
         NSFW_DETECTOR = NSFWChecker(model_path=path, providers=PROVIDER)
@@ -189,8 +189,8 @@ def process(
         )
 
     start_time = time.time()
-    #total_exec_time = lambda start_time: divmod(time.time() - start_time, 60)
-    #get_finsh_text = lambda start_time: f"✔️ Completed in {int(total_exec_time(start_time)[0])} min {int(total_exec_time(start_time)[1])} sec."
+    total_exec_time = lambda start_time: divmod(time.time() - start_time, 60)
+    get_finsh_text = lambda start_time: f"✔️ Completed in {int(total_exec_time(start_time)[0])} min {int(total_exec_time(start_time)[1])} sec."
 
     ## ------------------------------ PREPARE INPUTS & LOAD MODELS ------------------------------
 
