@@ -118,10 +118,10 @@ def load_face_parser_model(path="./assets/pretrained_models/79999_iter.pth"):
     if FACE_PARSER is None:
         FACE_PARSER = init_parsing_model(path, device=device)
   
-def load_nsfw_detector_model(path="./assets/pretrained_models/open-nsfw.onnx"):
-    global NSFW_DETECTOR
-    if NSFW_DETECTOR is None:
-        NSFW_DETECTOR = NSFWChecker(model_path=path, providers=PROVIDER)
+#def load_nsfw_detector_model(path="./assets/pretrained_models/open-nsfw.onnx"):
+#    global NSFW_DETECTOR
+#    if NSFW_DETECTOR is None:
+#        NSFW_DETECTOR = NSFWChecker(model_path=path, providers=PROVIDER)
 
 
 load_face_analyser_model()
