@@ -219,23 +219,23 @@ def process(
     half = len(specifics) // 2
     sources = specifics[:half]
     specifics = specifics[half:]
-    #if crop_top > crop_bott:
-    #    crop_top, crop_bott = crop_bott, crop_top
-    #if crop_left > crop_right:
-    #    crop_left, crop_right = crop_right, crop_left
-    #crop_mask = (crop_top, 511-crop_bott, crop_left, 511-crop_right)
+    if crop_top > crop_bott:
+        crop_top, crop_bott = crop_bott, crop_top
+    if crop_left > crop_right:
+        crop_left, crop_right = crop_right, crop_left
+    crop_mask = (crop_top, 511-crop_bott, crop_left, 511-crop_right)
 
-    #def swap_process(image_sequence):
+    def swap_process(image_sequence):
         ## ------------------------------ CONTENT CHECK ------------------------------
 
-        yield "### \n ⌛ Checking contents...", *ui_before()
-        nsfw = NSFW_DETECTOR.is_nsfw(image_sequence)
-        if nsfw:
-            message = "NSFW Content detected !!!"
-            yield f"### \n 🔞 {message}", *ui_before()
-            assert not nsfw, message
-            return False
-        EMPTY_CACHE()
+        #yield "### \n ⌛ Checking contents...", *ui_before()
+        #nsfw = NSFW_DETECTOR.is_nsfw(image_sequence)
+        #if nsfw:
+        #    message = "NSFW Content detected !!!"
+        #    yield f"### \n 🔞 {message}", *ui_before()
+        #    assert not nsfw, message
+        #    return False
+        #EMPTY_CACHE()
 
         ## ------------------------------ ANALYSE FACE ------------------------------
 
